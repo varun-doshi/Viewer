@@ -9,8 +9,10 @@ function App() {
   const [fetchForCollection, setFetchForCollection] = useState(false);
   const [network, setNetwork] = useState("ETH");
   const [API_KEY, setAPIKEY] = useState("");
+  const [loading, setLoading] = useState("Search");
 
   const fetchNFTs = async () => {
+    setLoading("Loading...");
     let nfts;
 
     const baseURL = `https://${network}-mainnet.g.alchemy.com/v2/${API_KEY}`;
@@ -23,10 +25,12 @@ function App() {
     if (!collectionAddress.length) {
       const fetchUrl = `${baseURL}/getNFTs/?owner=${walletAddress}`;
       nfts = await fetch(fetchUrl, requestOptions).then((data) => data.json());
+      setLoading("Search");
     } else {
       console.log("Getting NFTs for collection");
       const fetchURL = `${baseURL}/getNFTs/?owner=${walletAddress}&contractAddresses%5B%5D=${collectionAddress}`;
       nfts = await fetch(fetchURL, requestOptions).then((data) => data.json());
+      setLoading("Search");
     }
 
     if (nfts) {
@@ -98,13 +102,13 @@ function App() {
           </label>
         </div>
         <button
-          className="disabled:bg-slate-500  bg-gradient-to-r from-yellow-600 to-red-600 text-2xl p-2 rounded-md text-white"
+          className="disabled:bg-slate-500 w-[150px] bg-gradient-to-r from-yellow-600 to-red-600 text-2xl py-2 hover:scale-105 rounded-md text-white"
           onClick={() => {
             if (fetchForCollection) fetchNFTsForCollection();
             else fetchNFTs();
           }}
         >
-          Search
+          {loading}
         </button>
       </div>
       <div className="mt-4">
