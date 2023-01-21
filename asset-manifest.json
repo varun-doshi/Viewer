@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/Viewer/static/css/main.c68b3e57.css",
+    "main.js": "/Viewer/static/js/main.e3b2e2fb.js",
+    "index.html": "/Viewer/index.html",
+    "main.c68b3e57.css.map": "/Viewer/static/css/main.c68b3e57.css.map",
+    "main.e3b2e2fb.js.map": "/Viewer/static/js/main.e3b2e2fb.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.c68b3e57.css",
+    "static/js/main.e3b2e2fb.js"
+  ]
+}
